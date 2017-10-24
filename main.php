@@ -49,18 +49,16 @@ for ($i = 0; $i < 10; $i++) {
     $blackDuck->upAge();
 }
 
-$phoneSamsung = new \Products\Product('Samsung', 20000, 'Черный');
-$phoneSamsung->setProductGroup('Смартфон');
+$phoneSamsung = new \Products\Phone('Samsung', 20000, 'Черный');
 
-$phoneApple = new \Products\Product('Apple', 30000, 'Белый');
+$phoneApple = new \Products\Phone('Apple', 30000, 'Белый');
 $phoneApple->setProductDiscount(10);
-$phoneApple->setProductGroup('Смартфон');
 
-$caseSamsung = new \Products\Product('Samsung', 600, 'Черный');
+$caseSamsung = new \Products\Phone('Samsung', 600, 'Черный');
 $caseSamsung->setProductDiscount(15);
 $caseSamsung->setProductGroup('Чехол');
 
-$caseApple = new \Products\Product('Apple', 700, 'Белый');
+$caseApple = new \Products\Phone('Apple', 700, 'Белый');
 $caseApple->setProductDiscount(25);
 $caseApple->setProductGroup('Чехол');
 
@@ -91,8 +89,8 @@ echo $caseSamsung->getFullDescription() . '<br>';
 echo $caseApple->getFullDescription() . '<br>';
 echo '<br>';
 */
-$zeroCostProduct = new \Products\Product('Zero', 0, 'Белый');
-$emptyNameProduct = new \Products\Product('', 5, 'Белый');
+$zeroCostProduct = new \Products\Phone('Zero', 0, 'Белый');
+$emptyNameProduct = new \Products\Phone('', 5, 'Белый');
 
 /* Работаем с корзиной */
 $list = array($carAudi, $carKia, $tvPhilips, $tvSony, $whitePen, $blackPen, $brownDuck, $blackDuck,
@@ -130,11 +128,11 @@ try {
     $order = new \Order\Order($basket);
 
     $order->completeOrder(); // меняем состояние заказа
-    echo '<p> Текущее состояние заказа: '. $order->getOrderState() . '</p>'; // выводим на экран состояние заказа
+    echo '<p> Текущее состояние заказа: ' . $order->getOrderState() . '</p>'; // выводим на экран состояние заказа
     $order->printOrder(); // выводим содержимое заказа на экран
 
     $order->cancelOrder(); // отменяем заказ
-    echo '<p> Текущее состояние заказа: '. $order->getOrderState() . '</p>';
+    echo '<p> Текущее состояние заказа: ' . $order->getOrderState() . '</p>';
 
 } catch (\ProductErrorException $e) {
     echo $e->getMessage();

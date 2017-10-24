@@ -2,7 +2,7 @@
 
 namespace Products;
 
-class Product implements \BasicInfo
+abstract class Product implements \BasicInfo
 {
     protected static $groupDiscount = [];
     protected $name;
