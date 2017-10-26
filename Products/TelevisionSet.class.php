@@ -14,12 +14,12 @@ class TelevisionSet extends Product
 
     public function volumeUp()
     {
-        $this->volume = ($this->state === self::STATE_ON) && ($this->volume) < 100 ? ++$this->volume : $this->volume;
+        $this->volume = (($this->state === self::STATE_ON) && ($this->volume < 100)) ? ++$this->volume : $this->volume;
     }
 
     public function volumeDown()
     {
-        $this->volume = ($this->state === self::STATE_ON) && ($this->volume) > 0 ? --$this->volume : $this->volume;
+        $this->volume = (($this->state === self::STATE_ON) && ($this->volume > 0)) ? --$this->volume : $this->volume;
     }
 
     public function turnOn()
@@ -34,9 +34,9 @@ class TelevisionSet extends Product
 
     public function getFullDescription($itemType = true)
     {
-        $format = " %s сейчас %s, его громкость %s, канал №%u.";
         return parent::getFullDescription() .
-            sprintf($format, $this->getProductGroup(), $this->getState(), $this->getVolume(), $this->getChannel());
+            sprintf(" %s сейчас %s, его громкость %s, канал №%u.", $this->getProductGroup(),
+                $this->getState(), $this->getVolume(), $this->getChannel());
     }
 
     public function getState()
@@ -56,6 +56,6 @@ class TelevisionSet extends Product
 
     public function setChannel($channel)
     {
-        $this->channel = $this->state === self::STATE_ON ? $channel : $this->channel;
+        $this->channel = ($this->state === self::STATE_ON) ? $channel : $this->channel;
     }
 }

@@ -15,9 +15,9 @@ class Pen extends Product
 
     public function getFullDescription($itemType = true)
     {
-        $format = " У этой ручки толщина стержня %01.1f, уровень чернил %u.";
         return parent::getFullDescription() .
-            sprintf($format, $this->getThickness(), $this->getInkLevel());
+            sprintf(" У этой ручки толщина стержня %01.1f, уровень чернил %u.", $this->getThickness(),
+                $this->getInkLevel());
     }
 
     public function getThickness()

@@ -10,7 +10,7 @@ class Duck extends Product
 
     public function changeWeight($changeWeight)
     {
-        $this->weight = ($this->weight + $changeWeight) >= 1 ? ($this->weight + $changeWeight) : 1;
+        $this->weight = (($this->weight + $changeWeight) >= 1) ? ($this->weight + $changeWeight) : 1;
     }
 
     public function upAge()
@@ -20,9 +20,8 @@ class Duck extends Product
 
     public function getFullDescription($itemType = true)
     {
-        $format = " Возраст этой утки %u лет, ее вес %u кг.";
         return parent::getFullDescription() .
-            sprintf($format, $this->getAge(), $this->getWeight());
+            sprintf(" Возраст этой утки %u лет, ее вес %u кг.", $this->getAge(), $this->getWeight());
     }
 
     public function getAge()

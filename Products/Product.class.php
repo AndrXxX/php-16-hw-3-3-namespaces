@@ -20,10 +20,12 @@ abstract class Product implements \BasicInfo
 
     public function getFullDescription($itemType = true)
     {
-        $format = "%1\$s %2\$s цвета %3\$s цена %4\$u руб., скидка на всю группу %1\$s - %5\$u процентов, 
-          скидка именно на %2\$s - %6\$u процентов.";
-        $format = ($itemType) ? 'Товар ' . $format : $format;
-        return vsprintf($format, $this->getProductInfo());
+        $advName = $itemType ? 'Товар ' : '';
+        return $advName . vsprintf(
+                "%1\$s %2\$s цвета %3\$s цена %4\$u руб., скидка на всю группу %1\$s - %5\$u процентов, 
+          скидка именно на %2\$s - %6\$u процентов.",
+                $this->getProductInfo()
+            );
     }
 
     public function getProductInfo()
